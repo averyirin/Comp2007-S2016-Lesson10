@@ -23,9 +23,10 @@ namespace Comp2007_S2016_Lesson10.Controllers
         //
         // GET: /Store/Browse?genre=Disco
       //  [AllowAnonymous]
-        public ActionResult Browse(string genre)
+        public ActionResult Browse(string genre="Rock")
         {
-            Genre genreModel = new Genre(genre);
+            Genre genreModel = storeDB.Genres.Include("Albums")
+       .Single(g => g.Name == genre);
 
             return View(genreModel);
         }
@@ -34,7 +35,7 @@ namespace Comp2007_S2016_Lesson10.Controllers
         //[AllowAnonymous]
         public ActionResult Details(int id = 1)
         {
-            Album album = new Album("Album " + id);
+            Album album = storeDB.Albums.Find(id);
 
             return View(album);
         }
