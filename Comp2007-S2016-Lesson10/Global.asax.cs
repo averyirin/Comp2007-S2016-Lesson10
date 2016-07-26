@@ -12,6 +12,8 @@ namespace Comp2007_S2016_Lesson10
     {
         protected void Application_Start()
         {
+            //insert code
+            System.Data.Entity.Database.SetInitializer(new Comp2007_S2016_Lesson10.Models.SampleData());
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
